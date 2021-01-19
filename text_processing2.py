@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*- 
+
 #######################
 # Test Processing II  #
 #######################
@@ -28,9 +30,32 @@ def digits_to_words(input_string):
             >>> tp2.digits_to_words(digits_str2)
             'three one four one five'
     """
-    digit_string = None
-    return digit_string
+    normalized_string = []
 
+    for i in input_string:
+        if i.isdigit() == True:
+            if i == '0':
+                normalized_string.append('zero')
+            elif i == '1':
+                normalized_string.append('one')
+            elif i == '2':
+                normalized_string.append('two')
+            elif i == '3':
+                normalized_string.append('three')
+            elif i == '4':
+                normalized_string.append('four')
+            elif i == '5':
+                normalized_string.append('five')
+            elif i == '6':
+                normalized_string.append('six')
+            elif i == '7':
+                normalized_string.append('seven')
+            elif i == '8':
+                normalized_string.append('eight')
+            elif i == '9':
+                normalized_string.append('nine')
+
+    return ' '.join(normalized_string)
 
 """
 컴퓨터 프로그래밍에 많은 명명 규칙이 있지만, 두 규칙이 특히 흔히 쓰입니다. 
@@ -64,5 +89,21 @@ def to_camel_case(underscore_str):
             >>> tp2.to_camel_case(underscore_str3)
             "alreadyCamel"
     """
-    camelcase_str = None
-    return camelcase_str
+    if not '_' in underscore_str:
+        return underscore_str
+        
+    camelcase_str = ''
+    answer = ''
+
+    camelcase_str = underscore_str.split('_')
+    count = 0
+
+    for i in camelcase_str:
+        if i!='':
+            if count == 0:
+                answer = answer + i.lower()
+                count +=1
+            else:
+                answer = answer + i.capitalize()
+
+    return answer
